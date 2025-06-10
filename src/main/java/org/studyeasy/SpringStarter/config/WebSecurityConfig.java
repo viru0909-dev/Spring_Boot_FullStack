@@ -20,6 +20,7 @@ public class WebSecurityConfig {
       "/js/**"
     };
     @Bean
+  
     public  SecurityFilterChain filterChain(HttpSecurity http)throws Exception{
         http
         .authorizeRequests()

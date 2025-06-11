@@ -45,7 +45,7 @@ public class WebSecurityConfig {
         .and()
         .logout()
         .logoutUrl("/logout")
-        .logoutSuccessUrl("/logout?success")
+        .logoutSuccessUrl("/")
         .and()
         .httpBasic();
 

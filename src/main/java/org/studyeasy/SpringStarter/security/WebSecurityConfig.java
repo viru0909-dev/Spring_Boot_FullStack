@@ -1,4 +1,4 @@
-package org.studyeasy.SpringStarter.config;
+package org.studyeasy.SpringStarter.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;

@@ -1,6 +1,8 @@
 package org.studyeasy.SpringStarter.config;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -12,6 +14,7 @@ import org.studyeasy.SpringStarter.services.AccountService;
 import org.studyeasy.SpringStarter.services.AuthorityService;
 import org.studyeasy.SpringStarter.services.PostService;
 import org.studyeasy.SpringStarter.util.constants.Privillages;
+import org.studyeasy.SpringStarter.util.constants.Roles;
 
 
 @Component
@@ -39,21 +42,42 @@ public class SeedData implements CommandLineRunner{
 
        Account account01 = new Account();
        Account account02 = new Account();
+       Account account03 = new Account();
+       Account account04 = new Account();
 
-       account01.setEmail("account01@studyeasy.org");
-       account01.setPassword("password");
-       account01.setFirstname("user01");
+       account01.setEmail("user@user.com");
+       account01.setPassword("pass987");
+       account01.setFirstname("User");
        account01.setLastname("lastname");
 
 
-       account02.setEmail("account02@studyeasy.org");
-       account02.setPassword("password");
-       account02.setFirstname("user02");
+       account02.setEmail("admin@admin.com");
+       account02.setPassword("pass987");
+       account02.setFirstname("Admin");
        account02.setLastname("lastname");
+       account02.setRole(Roles.ADMIN.getRole());
 
+       account03.setEmail("editor@editor.com");
+       account03.setPassword("pass987");
+       account03.setFirstname("Editor");
+       account03.setLastname("lastname");
+       account03.setRole(Roles.EDITOR.getRole());
+
+       account04.setEmail("super_editor@editor.com");
+       account04.setPassword("pass987");
+       account04.setFirstname("Editor");
+       account04.setLastname("lastname");
+       account04.setRole(Roles.EDITOR.getRole());
+
+       Set<Authority> authorities = new HashSet<>();
+       authorityService.findById(Privillages.ACCESS_ADMIN_PANEL.getId()).ifPresent(authorities::add);
+       authorityService.findById(Privillages.RESET_ANY_USER_PASSWORD.getId()).ifPresent(authorities::add);
+       account04.setAuthorities(authorities);
 
        accountService.save(account01);
        accountService.save(account02);
+       accountService.save(account03);
+       accountService.save(account04);
        
 
 

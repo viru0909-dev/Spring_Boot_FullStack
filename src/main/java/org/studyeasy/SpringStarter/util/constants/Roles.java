@@ -1,7 +1,7 @@
 package org.studyeasy.SpringStarter.util.constants;
 
 public enum Roles {
-   USER("ROLE_USER"),ADMIN("ROLE_ADMIN"),EDITOR("ROLE_EDITOP");
+   USER("ROLE_USER"),ADMIN("ROLE_ADMIN"),EDITOR("ROLE_EDITOR");
    
    private String role;
    private Roles(String role) {
